@@ -1,0 +1,23 @@
+packages:
+    gcc-env:
+      compiler:
+          toolchain: gcc
+          spec: gcc@11
+      unify: true
+      specs:
+      - cmake
+      - pkgconfig
+      - cosma@2.5.1 +scalapack
+      - libint@2.6.0 +fortran tune=cp2k-lmax-6
+      - spglib@1.16.1
+      - libxc@6.0.0
+      - libxsmm@1.17
+      - python@3.9
+      - py-numpy
+      - fftw-api@3
+      - blas
+      - lapack
+      - scalapack
+      mpi: 
+        spec: cray-mpich-binary
+        gpu: Null

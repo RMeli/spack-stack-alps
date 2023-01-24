@@ -1,0 +1,30 @@
+packages:
+    gcc-env:
+      compiler:
+          toolchain: gcc
+          spec: gcc@11
+      unify: true
+      specs:
+      - cmake
+      - pkgconfig
+      - libint@2.6.0
+      - pika@0.11 build_type=Release +mpi
+      - pika-algorithms build_type=Release
+      - intel-mkl
+      - blaspp@2022.07.00
+      - lapackpp@2022.07.00
+      - umpire@4.1.2 ~shared
+      - blt@0.4.1
+      mpi:
+        spec: cray-mpich-binary
+        gpu: false
+    tools:
+      compiler:
+        toolchain: gcc
+        spac: gcc@11
+      unify: true
+      specs:
+      - cmake
+      - pkgconfig
+      - ninja
+      - neovim

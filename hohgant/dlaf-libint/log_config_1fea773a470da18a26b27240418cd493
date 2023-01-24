@@ -1,0 +1,13 @@
+2023-01-24 13:18:56,856 : DEBUG   : Command line arguments: Namespace(build='/dev/shm/rmeli/dlaf-libint', debug=False, recipe='dlaf-libint/gcc-cpu/')
+2023-01-24 13:18:56,860 : INFO    : Spack Stack Tool
+2023-01-24 13:18:56,860 : INFO    :   recipe path: dlaf-libint/gcc-cpu/
+2023-01-24 13:18:56,861 : INFO    :   build path : /dev/shm/rmeli/dlaf-libint
+2023-01-24 13:18:56,861 : DEBUG   : Generating recipe
+2023-01-24 13:18:56,862 : ERROR   : The recipe path '/users/rmeli/git/spack-stack-alps/hohgant/dlaf-libint/dlaf-libint/gcc-cpu/' does not exist
+Traceback (most recent call last):
+  File "/users/rmeli/git/sstool/sstool/main.py", line 531, in main
+    recipe = Recipe(args)
+  File "/users/rmeli/git/sstool/sstool/main.py", line 118, in __init__
+    raise FileNotFoundError(f"The recipe path '{path}' does not exist")
+FileNotFoundError: The recipe path '/users/rmeli/git/spack-stack-alps/hohgant/dlaf-libint/dlaf-libint/gcc-cpu/' does not exist
+2023-01-24 13:18:56,864 : INFO    : see log_config_1fea773a470da18a26b27240418cd493 for more information
