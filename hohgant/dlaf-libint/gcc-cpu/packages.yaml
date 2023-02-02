@@ -7,7 +7,8 @@ packages:
       specs:
       - cmake
       - pkgconfig
-      - libint@2.6.0
+      - libint@2.6.2
+      - eigen@3.4.0
       - pika@0.11 build_type=Release +mpi
       - pika-algorithms build_type=Release
       - intel-mkl
@@ -28,3 +29,6 @@ packages:
       - pkgconfig
       - ninja
       - neovim
+      - npm
+      - rust
+      - python@3.9

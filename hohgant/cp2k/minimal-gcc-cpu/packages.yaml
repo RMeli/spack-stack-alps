@@ -5,19 +5,31 @@ packages:
           spec: gcc@11
       unify: true
       specs:
-      - cmake
-      - pkgconfig
-      - cosma@2.5.1 +scalapack
+      # Main CMake dependencies
+      - cosma@2.5.1 +scalapack ^netlib-scalapack
       - libint@2.6.0 +fortran tune=cp2k-lmax-6
       - spglib@1.16.1
       - libxc@6.0.0
       - libxsmm@1.17
-      - python@3.9
-      - py-numpy
-      - fftw-api@3
-      - blas
-      - lapack
-      - scalapack
-      mpi: 
+      - dbcsr@2.5.0 smm=libxsmm
+      - fftw@3.3.10 +mpi +openmp # Switch to cray-fftw or amdfftw?
+      - netlib-lapack~external-blas
+      - netlib-scalapack+pic # Use amdscalapack instead?
+      # Optional CMake dependencies
+      #- sirius@7.3.2 +fortran +shared +openmp
+      mpi:
         spec: cray-mpich-binary
         gpu: Null
+    tools:
+      compiler:
+          toolchain: gcc
+          spec: gcc@11
+      unify: true
+      specs:
+      - cmake
+      - pkgconfig
+      #- neovim
+      #- ripgrep # nvim plugin
+      #- python@3.9 # 4 nvim plugins
+      #- rust # 4 nvim plugins
+      #- npm # 4 nvim plugins
