@@ -1,8 +1,8 @@
 packages:
     gcc-env:
       compiler:
-          toolchain: gcc
-          spec: gcc@11
+      - toolchain: gcc
+        spec: gcc@11
       unify: true
       specs:
       # Main CMake dependencies
@@ -22,8 +22,8 @@ packages:
         gpu: Null
     tools:
       compiler:
-          toolchain: gcc
-          spec: gcc@11
+      - toolchain: gcc
+        spec: gcc@11
       unify: true
       specs:
       - cmake
