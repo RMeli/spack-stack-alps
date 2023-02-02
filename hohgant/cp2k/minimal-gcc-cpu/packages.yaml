@@ -6,15 +6,14 @@ packages:
       unify: true
       specs:
       # Main CMake dependencies
-      - cosma@2.5.1 +scalapack ^netlib-scalapack
-      - libint@2.6.0 +fortran tune=cp2k-lmax-6
-      - spglib@1.16.1
-      - libxc@6.0.0
-      - libxsmm@1.17
-      - dbcsr@2.5.0 smm=libxsmm
-      - fftw@3.3.10 +mpi +openmp # Switch to cray-fftw or amdfftw?
-      - netlib-lapack~external-blas
-      - netlib-scalapack+pic # Use amdscalapack instead?
+      - cosma +scalapack
+      - libint +fortran tune=cp2k-lmax-6
+      - spglib
+      - libxc
+      - libxsmm
+      - dbcsr smm=libxsmm
+      - fftw +mpi +openmp # TODO: Fix CP2K CMake to use FFTW via MKL 
+      - intel-oneapi-mkl +cluster # Cluster support: scalapack, blacs, ... Use amdscalapack instead?
       # Optional CMake dependencies
       #- sirius@7.3.2 +fortran +shared +openmp
       mpi:
@@ -28,8 +27,8 @@ packages:
       specs:
       - cmake
       - pkgconfig
-      #- neovim
-      #- ripgrep # nvim plugin
-      #- python@3.9 # 4 nvim plugins
-      #- rust # 4 nvim plugins
-      #- npm # 4 nvim plugins
+      # - neovim
+      # - ripgrep # nvim plugin
+      # - python@3.9 # 4 nvim plugins
+      # - rust # 4 nvim plugins
+      # - npm # 4 nvim plugins
