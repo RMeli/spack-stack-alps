@@ -1,0 +1,27 @@
+packages:
+    gcc-env:
+      compiler:
+      - toolchain: gcc
+        spec: gcc@11
+      unify: true
+      specs:
+      - cosma@2.5.1 +scalapack
+      - libint@2.6.0 +fortran tune=cp2k-lmax-6
+      - spglib@1.16.1
+      - libxc@6.1.0
+      - libxsmm@1.17 +shared
+      - dbcsr@2.5.0 smm=libxsmm
+      - fftw@3.3.10 +mpi +openmp # TODO: Fix CP2K CMake to use FFTW via MKL 
+      - intel-oneapi-mkl +cluster # Cluster support: scalapack, blacs, ... Use amdscalapack instead?
+      mpi:
+        spec: cray-mpich-binary
+        gpu: Null
+    tools:
+      compiler:
+      - toolchain: gcc
+        spec: gcc@11
+      unify: true
+      specs:
+      - cmake@3.25.2
+      - pkgconfig
+      - python@3.9 # 4 nvim plugins
