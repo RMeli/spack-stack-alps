@@ -1,0 +1,28 @@
+packages:
+    gcc-env:
+      compiler:
+      - toolchain: gcc
+        spec: gcc@11
+      unify: true
+      specs:
+      # Main CMake dependencies
+      - intel-mkl
+      - blaspp ^intel-mkl
+      - lapackpp ^intel-mkl
+      - umpire@5.0.1 ~examples
+      - pika +mpi
+      - pika-algorithms
+      # Optional CMake dependencies
+      - googletest
+      mpi:
+        spec: cray-mpich-binary
+        gpu: Null
+    tools:
+      compiler:
+      - toolchain: gcc
+        spec: gcc@11
+      unify: true
+      specs:
+      - cmake
+      - pkgconfig
+      - python@3.9
