@@ -1,0 +1,12 @@
+packages:
+    gcc-env:
+      compiler:
+      - toolchain: gcc
+        spec: gcc@11
+      unify: true
+      specs:
+      - intel-mkl
+      - cosma@2.5.1 +scalapack
+      mpi:
+        spec: cray-mpich-binary
+        gpu: Null
