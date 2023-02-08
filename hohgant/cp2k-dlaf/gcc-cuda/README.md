@@ -21,7 +21,7 @@ make -j 32
 
 `dlaf` does not seem to play nicely with `intel-oneapi-mkl` (**to be investigated**), while `intel-mkl` does not tap into the correct MPI provided by `cray-mpich-binary` (see [stackinator#43](https://github.com/eth-cscs/stackinator/issues/43)).
 
-The file `` was manually amended in order to hit `^cray-mpich-binary` as follows:
+Spack's file `spack/lib/spack/spack/build_systems/intel.py` was manually amended (within the Spack instance of the environment) in order to hit `^cray-mpich-binary` as follows:
 ```diff
         elif (
             "^mpich@2:" in spec_root
