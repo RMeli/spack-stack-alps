@@ -1,4 +1,4 @@
-name: dlaf-cpu-dev
+name: dlaf-gpu-dev
 store: /user-environment
 system: hohgant
 spack:
