@@ -1,0 +1,33 @@
+gcc-env:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  # Main CMake dependencies
+  - cuda@11.8
+  - intel-mkl
+  - blaspp ^intel-mkl
+  - lapackpp ^intel-mkl
+  - mimalloc
+  - fmt
+  - camp
+  - umpire@5.0.1 +cuda ~shared ~examples
+  - pika +mpi +cuda
+  - pika-algorithms
+  - whip +cuda
+  # Optional CMake dependencies
+  - googletest
+  mpi:
+    spec: cray-mpich
+    gpu: cuda
+tools:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - cmake
+  - pkgconfig
+  - python@3.9
+  - doxygen
