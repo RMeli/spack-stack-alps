@@ -1,4 +1,4 @@
-name: dlaf-gpu-dev
+name: dlaf-gcc-mkl~ilp64-cuda
 store: /user-environment
 system: hohgant
 spack:

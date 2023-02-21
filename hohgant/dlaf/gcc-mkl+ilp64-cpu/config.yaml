@@ -1,6 +1,6 @@
-name: dlaf-cpu-dev
+name: dlaf-gcc-mkl+ilp64-cpu
 store: /user-environment
-system: hohgant
+system: hohgat n
 spack:
   repo: https://github.com/spack/spack.git
   commit: develop
