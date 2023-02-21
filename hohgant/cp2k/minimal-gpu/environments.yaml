@@ -1,0 +1,28 @@
+gcc-env:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - cuda@11.8
+  - cosma@master +scalapack +cuda
+  - libint@2.6.0 +fortran tune=cp2k-lmax-6
+  - libxc@6.1.0 #~shared +cuda
+  - spglib@1.16.1
+  - libxsmm@1.17 +shared
+  - dbcsr@2.5.0 smm=libxsmm +cuda cuda_arch=70
+  - fftw@3.3.10 +mpi +openmp # TODO: Fix CP2K CMake to use FFT via MKL or CUDA 
+  - intel-oneapi-mkl +cluster # Cluster support: scalapack, blacs, ... Use amdscalapack instead?
+  mpi:
+    spec: cray-mpich
+    gpu: cuda
+tools:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - cmake@3.25.2
+  - pkgconfig
+  - git
+  - python@3.9
