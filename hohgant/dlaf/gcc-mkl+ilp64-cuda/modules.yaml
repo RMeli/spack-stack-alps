@@ -11,6 +11,8 @@ modules:
     arch_folder: false
     roots:
       tcl: /user-environment/modules
+    enable:
+    - tcl 
     tcl:
       all:
         autoload: none
