@@ -34,3 +34,5 @@ Spack's file `spack/lib/spack/spack/build_systems/intel.py` was manually amended
         ):
             blacs_lib = "libmkl_blacs_intelmpi"
 ```
+
+**This is now in the `buildcache` (see `mirror.yaml`) and therefore subsequent builds will work, but the environment is not reproducible!**
