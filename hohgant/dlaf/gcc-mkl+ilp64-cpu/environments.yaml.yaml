@@ -6,16 +6,19 @@ packages:
       unify: true
       specs:
       # Main CMake dependencies
-      - intel-mkl
-      - blaspp ^intel-mkl
-      - lapackpp ^intel-mkl
+      - intel-mkl++ilp64
+      - blaspp ^intel-mkl++ilp64
+      - lapackpp ^intel-mkl++ilp64
+      - mimalloc
+      - fmt
+      - camp
       - umpire@5.0.1 ~examples
       - pika +mpi
       - pika-algorithms
       # Optional CMake dependencies
       - googletest
       mpi:
-        spec: cray-mpich-binary
+        spec: cray-mpich
         gpu: Null
     tools:
       compiler:
