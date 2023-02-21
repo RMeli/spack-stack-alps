@@ -6,9 +6,12 @@ gcc-env:
   specs:
   # Main CMake dependencies
   - cuda@11.8
-  - intel-mkl
-  - blaspp ^intel-mkl
-  - lapackpp ^intel-mkl
+  - intel-mkl++ilp64
+  - blaspp ^intel-mkl++ilp64
+  - lapackpp ^intel-mkl++ilp64
+  - mimalloc
+  - fmt
+  - camp
   - umpire@5.0.1 +cuda ~shared ~examples
   - pika +mpi +cuda
   - pika-algorithms
