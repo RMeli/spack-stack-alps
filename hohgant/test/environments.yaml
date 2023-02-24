@@ -1,0 +1,8 @@
+tools:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - cmake
+  - libxc@6.1.0
