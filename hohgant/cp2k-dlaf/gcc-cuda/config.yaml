@@ -4,7 +4,7 @@ system: hohgant
 spack:
   repo: https://github.com/spack/spack.git
   commit: develop
-modules: True
+modules: false
 mirror:
   enable: true
   key: /tmp/spack-push-key.gpg
