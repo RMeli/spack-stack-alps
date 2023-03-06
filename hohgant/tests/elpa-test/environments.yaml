@@ -4,4 +4,4 @@ tools:
     spec: gcc@11
   unify: true
   specs:
-  - elpa@2022.11.001
+  - elpa@2022.11.001+cuda
