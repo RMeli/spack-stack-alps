@@ -1,0 +1,10 @@
+name: elpa-test
+store: /user-environment
+system: hohgant
+spack:
+  repo: https://github.com/spack/spack.git
+  commit: develop
+modules: True
+mirror:
+  enable: true
+  key: /tmp/spack-push-key.gpg

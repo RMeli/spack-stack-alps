@@ -1,0 +1,35 @@
+packages:
+    gcc-env:
+      compiler:
+      - toolchain: gcc
+        spec: gcc@11
+      unify: true
+      specs:
+      # Main CMake dependencies
+      - blaspp
+      - lapackpp
+      - hip@5.3.3 ~cuda +rocm
+      - rocblas
+      - rocprim
+      - rocsolver
+      - rocthrust
+      - umpire@5.0.1 +rocm amdgpu_target=gfx90a:xnack- ~shared ~examples
+      - pika +mpi +rocm amdgpu_target=gfx90a:xnack-
+      - pika-algorithms
+      - whip +rocm amdgpu_target=gfx90a:xnack-
+      # Optional CMake dependencies
+      - googletest
+      mpi:
+        spec: cray-mpich-binary
+        gpu: rocm
+    tools:
+      compiler:
+      - toolchain: gcc
+        spec: gcc@11
+      unify: true
+      specs:
+      - cmake
+      - ninja
+      - pkgconfig
+      - python@3.9
+      - doxygen

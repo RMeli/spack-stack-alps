@@ -1,0 +1,7 @@
+tools:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - elpa@2022.11.001

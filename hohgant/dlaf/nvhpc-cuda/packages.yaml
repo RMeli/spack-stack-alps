@@ -1,0 +1,34 @@
+packages:
+    gcc-env:
+      compiler:
+      - toolchain: gcc
+        spec: gcc@11
+      - toolchain: llvm
+        spec: nvhpc@22.11
+      unify: true
+      specs:
+      # Main CMake dependencies
+      - cuda@11.8 %gcc
+      - ninja %gcc
+      - intel-mkl %nvhpc
+      - blaspp ^intel-mkl %nvhpc
+      - lapackpp ^intel-mkl %nvhpc
+      - umpire@5.0.1 +cuda ~shared ~examples %nvhpc
+      - pika +mpi +cuda %nvhpc
+      - pika-algorithms %nvhpc
+      - whip +cuda %nvhpc
+      # Optional CMake dependencies
+      - googletest %nvhpc
+      mpi:
+        spec: cray-mpich-binary
+        gpu: cuda
+    tools:
+      compiler:
+      - toolchain: gcc
+        spec: gcc@11
+      unify: true
+      specs:
+      - cmake
+      - pkgconfig
+      - python@3.9
+      - doxygen
