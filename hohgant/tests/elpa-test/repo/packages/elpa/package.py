@@ -24,7 +24,7 @@ class Elpa(AutotoolsPackage, CudaPackage, ROCmPackage):
 
     version(
         "2022.11.001",
-        sha256="a720be70f40d8edc5a731325ad55583038eadf85167083f476e355a2df8baa42",
+        sha256="75db3ac146f9a6a1598e3418ddcab2be2f40a30ef9ec4c00a3b5d3808c99c430",
     )
     version(
         "2022.11.001.rc2",
