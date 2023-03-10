@@ -1,0 +1,20 @@
+pexi1:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - pexsi@1.2.0
+  mpi:
+    spec: cray-mpich
+    gpu: Null
+pexi2:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - pexsi@2.0.0
+  mpi:
+    spec: cray-mpich
+    gpu: Null
