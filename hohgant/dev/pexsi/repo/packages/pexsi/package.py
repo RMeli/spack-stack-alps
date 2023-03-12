@@ -31,7 +31,6 @@ class Pexsi(MakefilePackage, CMakePackage):
         conditional("makefile", when="@0"),
         default="cmake",
     )
-
     version(
         "2.0.0",
         sha256="c5c83c2931b2bd0c68a462a49eeec983e78b5aaa1f17dd0454de4e27b91ca11f",
@@ -40,7 +39,6 @@ class Pexsi(MakefilePackage, CMakePackage):
         "1.2.0",
         sha256="8bfad6ec6866c6a29e1cc87fb1c17a39809795e79ede98373c8ba9a3aaf820dd",
     )
-    # version('1.0', sha256='1574c66fd69ff2a37c6250d65c4df43b57c79822b49bd65662582a0cd5d82f54')
     version(
         "0.10.2",
         sha256="8714c71b76542e096211b537a9cb1ffb2c28f53eea4f5a92f94cc1ca1e7b499f",
@@ -52,39 +50,35 @@ class Pexsi(MakefilePackage, CMakePackage):
 
     depends_on("parmetis")
     depends_on("superlu-dist@5.1.2:5.3", when="@0.10.2:0")
-    depends_on("superlu-dist@:6.1.0", when="@1") # Upper limit from CP2K toolchain
+    depends_on("superlu-dist@:6.1.0", when="@1")  # Upper limit from CP2K toolchain
     depends_on("superlu-dist@7", when="@2")
-    
+
     with when("build_system=cmake"):
         depends_on("cmake@3.10:", type="build")
         depends_on("cmake@3.17:", type="build", when="@2:")
 
-    variant("openmp", default=False, description="Build with OpenMP support", when="@2")
+    variant(
+        "openmp", default=False, description="Build with OpenMP support", when="@1.2"
+    )
     variant("fortran", default=False, description="Builds the Fortran interface")
 
     parallel = False
 
     def url_for_version(self, version):
-        if version ==  Version("0"):
-            return (
-                f"https://math.berkeley.edu/~linlin/pexsi/download/pexsi_v{version}.tar.gz"
-            )
+        if version == Version("0"):
+            return f"https://math.berkeley.edu/~linlin/pexsi/download/pexsi_v{version}.tar.gz"
 
-        return f"https://bitbucket.org/berkeleylab/pexsi/downloads/pexsi_v{version}.tar.gz"
+        return (
+            f"https://bitbucket.org/berkeleylab/pexsi/downloads/pexsi_v{version}.tar.gz"
+        )
 
-
-class CMakeBuilder(spack.build_systems.cmake.CMakeBuilder):
     def cmake_args(self):
         args = [
             self.define_from_variant("PEXSI_ENABLE_FORTRAN", "fortran"),
-            self.define_from_variant(
-                "PEXSI_ENABLE_OPENMP ", "openmp"
-            ),
+            self.define_from_variant("PEXSI_ENABLE_OPENMP ", "openmp"),
         ]
         return args
 
-
-class MakefileBuilder(spack.build_systems.makefile.MakefileBuilder):
     def edit(self, spec, prefix):
         substitutions = [
             ("@MPICC", self.spec["mpi"].mpicc),

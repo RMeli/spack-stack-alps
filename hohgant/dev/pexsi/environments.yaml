@@ -18,3 +18,13 @@ pexi2:
   mpi:
     spec: cray-mpich
     gpu: Null
+pexi0:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - pexsi@0.10.2
+  mpi:
+    spec: cray-mpich
+    gpu: Null
