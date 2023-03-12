@@ -72,13 +72,6 @@ class Pexsi(MakefilePackage, CMakePackage):
             f"https://bitbucket.org/berkeleylab/pexsi/downloads/pexsi_v{version}.tar.gz"
         )
 
-    def cmake_args(self):
-        args = [
-            self.define_from_variant("PEXSI_ENABLE_FORTRAN", "fortran"),
-            self.define_from_variant("PEXSI_ENABLE_OPENMP ", "openmp"),
-        ]
-        return args
-
     def edit(self, spec, prefix):
         substitutions = [
             ("@MPICC", self.spec["mpi"].mpicc),
@@ -137,3 +130,12 @@ class Pexsi(MakefilePackage, CMakePackage):
                 join_path(self.stage.source_path, "fortran"),
                 join_path(self.prefix, "fortran"),
             )
+
+
+class CMakeBuilder(spack.build_systems.cmake.CMakeBuilder):
+    def cmake_args(self):
+        args = [
+            self.define_from_variant("PEXSI_ENABLE_FORTRAN", "fortran"),
+            self.define_from_variant("PEXSI_ENABLE_OPENMP ", "openmp"),
+        ]
+        return args

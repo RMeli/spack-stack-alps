@@ -14,7 +14,10 @@ class Libxc(AutotoolsPackage, CudaPackage):
     url = "https://gitlab.com/libxc/libxc/-/archive/6.1.0/libxc-6.1.0.tar.gz"
 
     # Get checksum from latest release package at https://tddft.org/programs/libxc/download/
-    version("6.1.0", sha256="f593745fa47ebfb9ddc467aaafdc2fa1275f0d7250c692ce9761389a90dd8eaf")
+    version(
+        "6.1.0",
+        sha256="f593745fa47ebfb9ddc467aaafdc2fa1275f0d7250c692ce9761389a90dd8eaf",
+    )
 
     variant("shared", default=True, description="Build shared libraries")
 
@@ -49,7 +52,9 @@ class Libxc(AutotoolsPackage, CudaPackage):
             else:  # starting from version 4 there is also a stable f03 iface
                 libraries = ["libxcf90", "libxcf03"] + libraries
 
-        return find_libraries(libraries, root=self.prefix, shared=shared, recursive=True)
+        return find_libraries(
+            libraries, root=self.prefix, shared=shared, recursive=True
+        )
 
     def setup_build_environment(self, env):
         # microarchitecture-specific optimization flags should be controlled
