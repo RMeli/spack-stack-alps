@@ -31,14 +31,16 @@ class Elpa(AutotoolsPackage, CudaPackage, ROCmPackage):
         sha256="13d67e7d69894c631b48e4fcac905b51c4e41554c7eb4731e98c4e205f0fab9f",
     )
     version(
-        "2021.11.001", sha256="fb361da6c59946661b73e51538d419028f763d7cb9dacf9d8cd5c9cd3fb7802f"
+        "2021.11.001",
+        sha256="fb361da6c59946661b73e51538d419028f763d7cb9dacf9d8cd5c9cd3fb7802f",
     )
     version(
         "2021.05.002_bugfix",
         sha256="deabc48de5b9e4b2f073d749d335c8f354a7ce4245b643a23b7951cd6c90224b",
     )
     version(
-        "2021.05.001", sha256="a4f1a4e3964f2473a5f8177f2091a9da5c6b5ef9280b8272dfefcbc3aad44d41"
+        "2021.05.001",
+        sha256="a4f1a4e3964f2473a5f8177f2091a9da5c6b5ef9280b8272dfefcbc3aad44d41",
     )
 
     variant("openmp", default=True, description="Activates OpenMP support")
@@ -57,7 +59,9 @@ class Elpa(AutotoolsPackage, CudaPackage, ROCmPackage):
 
     with when("@2021.11.01:"):
         variant(
-            "autotune", default=False, description="Enables autotuning for matrix restribution"
+            "autotune",
+            default=False,
+            description="Enables autotuning for matrix restribution",
         )
         depends_on("scalapack", when="+autotune")
 
@@ -154,7 +158,9 @@ class Elpa(AutotoolsPackage, CudaPackage, ROCmPackage):
 
             if cuda_arch != "none":
                 options.append(
-                    "--with-{0}-compute-capability=sm_{1}".format(cuda_flag.upper(), cuda_arch)
+                    "--with-{0}-compute-capability=sm_{1}".format(
+                        cuda_flag.upper(), cuda_arch
+                    )
                 )
         else:
             options.append("--disable-{0}".format(cuda_flag))
@@ -169,7 +175,9 @@ class Elpa(AutotoolsPackage, CudaPackage, ROCmPackage):
 
         options += [
             "LDFLAGS={0}".format(spec["lapack"].libs.search_flags),
-            "LIBS={0} {1}".format(spec["lapack"].libs.link_flags, spec["blas"].libs.link_flags),
+            "LIBS={0} {1}".format(
+                spec["lapack"].libs.link_flags, spec["blas"].libs.link_flags
+            ),
         ]
 
         if "+mpi" in self.spec:
