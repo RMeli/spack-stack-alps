@@ -10,7 +10,7 @@ gcc-env:
   - zlib
   - glog
   - protobuf
-  - hdf5+cxx+hl
+  - hdf5+cxx+hl~mpi
   - openblas~fortran
   - openbabel@3:~gui~cairo~maeparser~coordgen
   - rdkit
