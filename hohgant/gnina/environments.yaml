@@ -1,0 +1,28 @@
+gcc-env:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - cuda@11.8
+  - libmolgrid
+  - boost+atomic+chrono+date_time+exception+filesystem+graph+iostreams+locale+log+math+python+program_options+random+regex+serialization+signals+system+test+thread+timer+wave
+  - zlib
+  - glog
+  - protobuf
+  - hdf5+cxx+hl
+  - openblas~fortran
+  - openbabel@3:~gui~cairo~maeparser~coordgen
+  - rdkit
+  - python@3.9
+  - py-numpy
+  - py-pytest
+tools:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - cmake@3.25.2
+  - pkgconfig
+  - git
