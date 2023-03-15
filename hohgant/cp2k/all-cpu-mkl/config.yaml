@@ -1,4 +1,4 @@
-name: cp2k-min-dev
+name: cp2k-mkl-cpu
 store: /user-environment
 system: hohgant
 spack:
