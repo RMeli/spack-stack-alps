@@ -1,25 +1,25 @@
 gcc-env:
   compiler:
   - toolchain: gcc
-  spec: gcc@11
+    spec: gcc@11
   unify: true
   specs:
-  - intel-mkl threads=none ^cray-mpich
+  - intel-mkl threads=openmp ^cray-mpich
   # CP2K
-  - cosma@master +scalapack
-  - libint@2.6.0 +fortran tune=cp2k-lmax-6
-    #  - libxc@6.1.0 #~shared +cuda
-  - spglib@2.0.2 ~openmp
-  - libxsmm@1.17 +shared
-  - dbcsr@2.5.0 smm=libxsmm ~openmp
-  - fftw@3.3.10 +mpi ~openmp
+  - cosma@2.6.6 +scalapack
+  - libint@2.6.0 +fortran tune=cp2k-lmax-5
+  - libxc@6.1.0
+  - spglib@2.0.2
+  - libxsmm@1.17
+  - dbcsr@2.5.0 smm=libxsmm +openmp
+  - fftw@3.3.10 +mpi +openmp
   # DLAF
-  - blaspp ~openmp ^intel-mkl
+  - blaspp ^intel-mkl
   - lapackpp ^intel-mkl
   - mimalloc
   - fmt
-  - camp ~openmp
-  - umpire@5.0.1 ~openmp ~examples
+  - camp
+  - umpire@5.0.1 ~examples
   - pika +mpi
   - pika-algorithms
   - googletest
