@@ -1,0 +1,31 @@
+gcc-env:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  # Main CMake dependencies
+  - intel-mkl threads=openmp
+  - blaspp ^intel-mkl threads=openmp
+  - lapackpp ^intel-mkl threads=openmp
+  - mimalloc
+  - fmt
+  - camp
+  - umpire@5.0.1 ~examples
+  - pika +mpi
+  - pika-algorithms
+  # Optional CMake dependencies
+  - googletest
+  - doxygen
+  mpi:
+    spec: cray-mpich
+    gpu: Null
+tools:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - cmake@3.22
+  - pkgconfig
+  - python@3.10
