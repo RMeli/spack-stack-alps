@@ -4,18 +4,18 @@ gcc-env:
     spec: gcc@11
   unify: true
   specs:
-  - intel-mkl threads=openmp ^cray-mpich
+  - intel-mkl@2020.4.304 threads=openmp
   # CP2K
   - cosma@2.6.6 +scalapack
   - libint@2.6.0 +fortran tune=cp2k-lmax-5
   - libxc@6.1.0
-  - spglib@2.0.2
+  - spglib@2.0.2 +openmp
   - libxsmm@1.17
-  - dbcsr@2.5.0 smm=libxsmm +openmp
-  - fftw@3.3.10 +mpi +openmp
+  - dbcsr@2.5.0 +openmp
+    #  - fftw@3.3.10 +openmp # Incompatible with intel-mkl@2017:
   # DLAF
-  - blaspp ^intel-mkl
-  - lapackpp ^intel-mkl
+  - blaspp ^intel-mkl@2020.4.304 threads=openmp
+  - lapackpp ^intel-mkl@2020.4.304 threads=openmp
   - mimalloc
   - fmt
   - camp
@@ -35,5 +35,6 @@ tools:
   - cmake@3.25.2
   - pkgconfig
   - git
-  - python@3.9
+  - python@3.10
+  - py-numpy
   - doxygen
