@@ -43,4 +43,3 @@ class TiledMm(CMakePackage, CudaPackage, ROCmPackage):
             args.extend([self.define("TILEDMM_GPU_BACKEND", "CUDA")])
 
         return args
-

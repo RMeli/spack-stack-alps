@@ -25,4 +25,3 @@ class Semiprof(CMakePackage):
             self.define_from_variant("SEMIPROF_WITH_EXAMPLES", "examples"),
             self.define_from_variant("BUILD_SHARED_LIBS", "shared"),
         ]
-

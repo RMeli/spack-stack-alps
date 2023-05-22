@@ -12,7 +12,7 @@ gcc-env:
   - spglib@2.0.2 +openmp
   - libxsmm@1.17
   - dbcsr@2.5.0 +openmp
-    #  - fftw@3.3.10 +openmp # Incompatible with intel-mkl@2017:
+  - fftw@3.3.10 +openmp
   # DLAF
   - blaspp ^intel-mkl@2020.4.304 threads=openmp
   - lapackpp ^intel-mkl@2020.4.304 threads=openmp
