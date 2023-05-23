@@ -1,4 +1,32 @@
-gcc-env:
+cpu:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - intel-mkl@2020.4.304 threads=openmp ^cray-mpich
+  # CP2K
+  - cosma@2.6.6 +scalapack
+  - libint@2.6.0 +fortran tune=cp2k-lmax-5
+  - libxc@6.1.0
+  - spglib@2.0.2 +openmp
+  - libxsmm@1.17
+  - dbcsr@2.5.0 smm=libxsmm +openmp
+  - fftw@3.3.10 +mpi +openmp
+  # DLAF
+  - blaspp ^intel-mkl threads=openmp ^cray-mpich
+  - lapackpp ^intel-mkl threads=openmp ^cray-mpich
+  - mimalloc
+  - fmt
+  - camp
+  - umpire@5.0.1 ~examples
+  - pika +mpi
+  - pika-algorithms
+  - googletest
+  mpi:
+   spec: cray-mpich
+   gpu: cuda
+nvgpu:
   compiler:
   - toolchain: gcc
     spec: gcc@11
@@ -10,10 +38,10 @@ gcc-env:
   - cosma@2.6.6 +scalapack +cuda
   - libint@2.6.0 +fortran tune=cp2k-lmax-5
   - libxc@6.1.0 # +cuda
-  - spglib@2.0.2
+  - spglib@2.0.2 +openmp
   - libxsmm@1.17
   - dbcsr@2.5.0 smm=libxsmm +cuda cuda_arch=70
-  - fftw@3.3.10 +mpi +openmp # TODO: Fix CP2K CMake to use FFT via MKL or CUDA 
+  - fftw@3.3.10 +mpi +openmp
   # DLAF
   - blaspp ^intel-mkl threads=openmp ^cray-mpich
   - lapackpp ^intel-mkl threads=openmp ^cray-mpich

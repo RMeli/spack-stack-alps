@@ -1,1 +1,5 @@
+# stackinator
 log_config*
+
+# python
+__pycache__

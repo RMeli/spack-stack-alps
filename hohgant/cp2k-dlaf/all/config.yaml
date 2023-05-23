@@ -1,9 +1,9 @@
-name: cp2k-dlaf-cuda
+name: cp2k-dlaf
 store: /user-environment
 system: hohgant
 spack:
   repo: https://github.com/spack/spack.git
-  commit: 4edd364a8b38ba617d86a821788c4225bc325b5b 
+  commit: develop 
 modules: false
 mirror:
   enable: true
