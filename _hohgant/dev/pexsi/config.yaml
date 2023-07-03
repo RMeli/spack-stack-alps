@@ -1,4 +1,4 @@
-name: dlaf-gcc-mkl+ilp64-cpu
+name: elpa-test
 store: /user-environment
 system: hohgant
 spack:

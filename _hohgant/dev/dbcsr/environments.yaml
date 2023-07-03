@@ -1,0 +1,30 @@
+dbcsr-A100:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - dbcsr@2.5.0 cuda_arch=80
+  mpi:
+    spec: cray-mpich
+    gpu: cuda
+dbcsr-Mi100:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - dbcsr@2.5.0 amdgpu_target=gfx908
+  mpi:
+    spec: cray-mpich
+    gpu: rocm
+dbcsr-Mi250:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - dbcsr@2.5.0 amdgpu_target=gfx90a
+  mpi:
+    spec: cray-mpich
+    gpu: rocm

@@ -1,0 +1,10 @@
+name: cp2k-full
+store: /user-environment
+system: hohgant
+spack:
+  repo: https://github.com/spack/spack.git
+  commit: 6cfb9339eec72cf81e1d27cf3b6086e82bbfea90 
+modules: True
+mirror:
+  enable: true
+  key: /tmp/spack-push-key.gpg

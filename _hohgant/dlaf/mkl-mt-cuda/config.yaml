@@ -1,0 +1,10 @@
+name: dlaf-mkl-mt-cuda
+store: /user-environment
+system: hohgant
+spack:
+  repo: https://github.com/spack/spack.git
+  commit: 784e5f57893177a42cebdff8629c4ebef6cd4bd0 
+modules: True
+mirror:
+  enable: true
+  key: /tmp/spack-push-key.gpg

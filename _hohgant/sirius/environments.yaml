@@ -1,0 +1,44 @@
+cpu:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+    - sirius +elpa +scalapack +apps +tests ^cray-mpich
+  mpi:
+   spec: cray-mpich
+   gpu: null
+nvgpu:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - sirius +cuda cuda_arch=80 +scalapack +apps +tests ^cray-mpich
+  - wannier90
+  mpi:
+   spec: cray-mpich
+   gpu: cuda
+python:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  specs:
+  - python@3.10
+  - py-numpy
+  - py-scipy
+  - py-h5py
+  - py-mpi4py
+  - py-pyyaml
+  - py-voluptuous
+  - py-pybind11
+tools:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - cmake@3.25.2
+  - pkgconfig
+  - git
+  - doxygen

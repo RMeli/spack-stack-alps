@@ -1,0 +1,20 @@
+cp2k:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - cp2k@develop +libxc +libint +spglib +cosma +libvori ^intel-mkl
+  mpi:
+    spec: cray-mpich
+    gpu: Null
+tools:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - cmake@3.25.2
+  - pkgconfig
+  - python@3.9
+  - py-numpy

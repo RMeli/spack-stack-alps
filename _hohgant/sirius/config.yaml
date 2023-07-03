@@ -1,0 +1,10 @@
+name: sirius
+store: /user-environment
+system: hohgant
+spack:
+  repo: https://github.com/spack/spack.git
+  commit: develop
+modules: false
+mirror:
+  enable: true
+  key: /tmp/spack-push-key.gpg

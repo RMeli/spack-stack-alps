@@ -1,0 +1,32 @@
+cp2k-cuda:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - cuda@11.8
+  - intel-oneapi-mkl +cluster # Cluster support: scalapack, blacs, ... Use amdscalapack instead?
+  - dbcsr@2.5.0 smm=libxsmm +openmp +cuda cuda_arch=70 # TODO: Change to 80
+  - libint@2.6.0 +fortran tune=cp2k-lmax-6
+  - libxc@6.1.0 #+cuda cuda_arch=80 # Experimental?
+  - pexsi@1.2.0 +fortran +openmp
+  - elpa@2022.11.001 +mpi +openmp +cuda cuda_arch=80
+  - sirius@7.3.2 +fortran +openmp ~apps +cuda cuda_arch=80
+  - cosma@2.5.1 +scalapack +cuda
+  - libvori@210412
+  - spglib@2.0.2 +openmp
+  - libxsmm@1.17
+  - spla@1.5.4 +fortran +openmp +cuda
+  mpi:
+    spec: cray-mpich
+    gpu: cuda
+tools:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - cmake@3.25.2
+  - pkgconfig
+  - python@3.9
+  - py-numpy
