@@ -1,0 +1,36 @@
+cp2k-nvgpu:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: when_possible
+  specs:
+  - cuda@11.8
+  - dbcsr +cuda cuda_arch=70 +shared ^cray-mpich
+  - libxc ~cuda
+  - cosma@master +scalapack +shared ^cray-mpich
+  - cp2k@master +libxc +libint +spglib +cosma ~elpa build_system=cmake ^cray-mpich
+  - cp2k@master +libxc +libint +spglib +cosma +elpa build_system=cmake ^cray-mpich
+  variants:
+    - +mpi
+    - +cuda
+    - cuda_arch=80
+  views:
+    develop:
+      exclude: ["cp2k"]
+    scalapack:
+      exclude: ["cp2k+elpa"]
+    elpa:
+      exclude: ["cp2k~elpa"]
+  mpi:
+    spec: cray-mpich
+    gpu: cuda
+tools:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - cmake@3.25.2
+  - pkgconfig
+  - python@3.10
+  - py-numpy
