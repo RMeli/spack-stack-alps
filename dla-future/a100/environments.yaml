@@ -1,0 +1,47 @@
+dlaf-nvgpu:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - cuda@11.8
+  - intel-mkl
+  - dla-future ^cray-mpich
+  variants:
+    - +mpi
+    - +cuda
+    - cuda_arch=80
+  views:
+    dev-nvgpu:
+      exclude: ["dla-future"]
+  mpi:
+    spec: cray-mpich
+    gpu: cuda
+dlaf-mc:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - cuda@11.8
+  - intel-mkl
+  - dla-future ^cray-mpich
+  variants:
+    - +mpi
+    - ~cuda
+    - ~rocm
+  views:
+    dev-mc:
+      exclude: ["dla-future"]
+  mpi:
+    spec: cray-mpich
+    gpu: cuda
+tools:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - cmake@3.25.2
+  - doxygen
+  - pkgconfig

@@ -1,0 +1,6 @@
+name: dla-future
+store: /user-environment
+spack:
+  repo: https://github.com/spack/spack.git
+  commit: develop
+modules: false
