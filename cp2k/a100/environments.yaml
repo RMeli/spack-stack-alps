@@ -15,6 +15,7 @@ cp2k-nvgpu:
     - +mpi
     - +cuda
     - cuda_arch=80
+    - build_type=Release
   views:
     dev:
       exclude: ["cp2k"]
@@ -40,6 +41,7 @@ cp2k-nvgpu-elpa:
     - +mpi
     - +cuda
     - cuda_arch=80
+    - build_type=Release
   views:
     dev-elpa:
       exclude: ["cp2k"]
