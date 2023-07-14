@@ -8,9 +8,10 @@ cp2k-nvgpu:
   - intel-oneapi-mkl +cluster
   - fftw@3.3.10 +openmp
   - libxc ~cuda
+  - sirius +fortran
   - dbcsr@develop +cuda cuda_arch=70 +shared +openmp ^intel-oneapi-mkl ^cray-mpich
   - cosma@master +gpu_direct +scalapack +shared ^intel-oneapi-mkl ^cray-mpich
-  - cp2k@master +libxc +libint +spglib +cosma ~elpa build_system=cmake ^intel-oneapi-mkl ^cray-mpich
+  - cp2k@master +libxc +libint +spglib +cosma +sirius ~elpa build_system=cmake ^intel-oneapi-mkl ^cray-mpich
   variants:
     - +mpi
     - +cuda
@@ -28,15 +29,16 @@ cp2k-nvgpu-elpa:
   compiler:
   - toolchain: gcc
     spec: gcc@11
-  unify: when_possible
+  unify: true
   specs:
   - cuda@11.8
   - intel-oneapi-mkl +cluster
   - fftw@3.3.10 +openmp
   - libxc ~cuda
+  - sirius +fortran
   - dbcsr@develop +cuda cuda_arch=70 +shared +openmp ^intel-oneapi-mkl ^cray-mpich
   - cosma@master +gpu_direct +scalapack +shared ^intel-oneapi-mkl ^cray-mpich
-  - cp2k@master +libxc +libint +spglib +cosma +elpa build_system=cmake ^intel-oneapi-mkl ^cray-mpich
+  - cp2k@master +libxc +libint +spglib +cosma +sirius +elpa build_system=cmake ^intel-oneapi-mkl ^cray-mpich
   variants:
     - +mpi
     - +cuda
