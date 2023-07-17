@@ -20,4 +20,6 @@ modules:
       projections:
         all: '{name}/{version}'
         cp2k~elpa: 'cp2k/{version}'
+        sirius~elpa: 'sirius/{version}'
         cp2k+elpa: 'cp2k+elpa/{version}'
+        sirius+elpa: 'sirius+elpa/{version}'
