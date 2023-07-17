@@ -1,0 +1,62 @@
+cp2k-mc:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - intel-oneapi-mkl +cluster
+  - fftw@3.3.10 +openmp
+  - libxc
+  - sirius +fortran +scalapack
+  - dbcsr@develop +shared +openmp ^intel-oneapi-mkl ^cray-mpich
+  - cosma@master +scalapack +shared ^intel-oneapi-mkl ^cray-mpich
+  - cp2k@master +libxc +libint +spglib +cosma +sirius ~elpa build_system=cmake ^intel-oneapi-mkl ^cray-mpich
+  variants:
+    - +mpi
+    - ~cuda
+    - ~rocm
+    - build_type=Release
+  views:
+    dev:
+      exclude: ["cp2k"]
+    scalapack:
+      exclude: [""]
+  mpi:
+    spec: cray-mpich
+    gpu: null
+cp2k-mc-elpa:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - intel-oneapi-mkl +cluster
+  - fftw@3.3.10 +openmp
+  - libxc
+  - sirius +fortran + scalapack +elpa
+  - dbcsr@develop +shared +openmp ^intel-oneapi-mkl ^cray-mpich
+  - cosma@master +scalapack +shared ^intel-oneapi-mkl ^cray-mpich
+  - cp2k@master +libxc +libint +spglib +cosma +sirius +elpa build_system=cmake ^intel-oneapi-mkl ^cray-mpich
+  variants:
+    - +mpi
+    - ~cuda
+    - ~rocm
+    - build_type=Release
+  views:
+    dev-elpa:
+      exclude: ["cp2k"]
+    elpa:
+      exclude: [""]
+  mpi:
+    spec: cray-mpich
+    gpu: null
+tools:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - cmake@3.25.2
+  - pkgconfig
+  - python@3.10
+  - py-numpy
