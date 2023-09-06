@@ -1,0 +1,4 @@
+#!/bin/bash
+
+wget https://jfrog.svc.cscs.ch/artifactory/alps-uenv/software/namd/NAMD_2.14_Source.tar.gz -P {{ env.build }}/environments/
+
