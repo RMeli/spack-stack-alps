@@ -1,0 +1,34 @@
+cp2k-scalapack:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@12.3
+  unify: true
+  specs:
+  - cuda@12
+  - openmpi +cuda fabrics=knem
+  - fftw@3.3.10 +openmp
+  - libxc ~cuda
+  - sirius +fortran +scalapack ^openmpi
+  - dbcsr@2.6.0 +shared +openmp smm=blas ^openmpi
+  - cosma@2.6.6 +gpu_direct +scalapack +shared ^openmpi
+  - cp2k@2023.2 +libxc +libint +spglib +cosma +sirius ~elpa build_system=cmake ^openmpi
+  variants:
+    - +mpi
+    - +cuda
+    - cuda_arch=80
+    - build_type=Release
+  views:
+    dev:
+      exclude: ["cp2k"]
+    scalapack:
+      exclude: [""]
+tools:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@12.3
+  unify: true
+  specs:
+  - cmake@3.25.2
+  - pkgconfig
+  - python@3.10
+  - py-numpy

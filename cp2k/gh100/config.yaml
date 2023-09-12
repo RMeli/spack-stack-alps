@@ -1,0 +1,6 @@
+name: cp2k-gh100
+store: /user-environment
+spack:
+  repo: https://github.com/spack/spack.git
+  commit: develop
+modules: True
