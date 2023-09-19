@@ -1,0 +1,24 @@
+namd-a100:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@12.3
+  unify: true
+  specs:
+  - cuda@12
+  - openmpi +cuda fabrics=knem
+  - fftw@3.3.9 +openmp
+  - charmpp@7.0.0 backend=multicore +production +tracing
+  - namd@3.0b3 +cuda cuda_arch=90
+  views:
+    dev:
+      exclude: ["namd"]
+    namd:
+      exclude: [""]
+tools:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@12.3
+  unify: true
+  specs:
+  - cmake@3.25.2
+  - pkgconfig
