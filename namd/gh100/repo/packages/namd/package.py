@@ -82,8 +82,7 @@ class Namd(MakefilePackage, CudaPackage):
 
     def _copy_arch_file(self, lib):
         config_filename = "arch/{0}.{1}".format(self.arch, lib)
-        print(self.arch)
-        copy("arch/Linux-x86_64.{0}".format(lib), config_filename)
+        copy("arch/Linux-ARM64.{0}".format(lib), config_filename)
         if lib == "tcl":
             filter_file(
                 r"-ltcl8\.5", "-ltcl{0}".format(self.spec["tcl"].version.up_to(2)), config_filename
@@ -246,6 +245,8 @@ class Namd(MakefilePackage, CudaPackage):
                 "CUDADIR={0}".format(spec["cuda"].prefix),
                 join_path("arch", self.arch + ".cuda"),
             )
+            opts.extend(["--cuda-gencode", "arch=compute_80,code=sm_80", "--cuda-gencode", "arch=compute_90,code=sm_90"])
+            opts.extend(["--with-single-node-cuda"])
 
         config = Executable("./config")
 
@@ -266,7 +267,10 @@ class Namd(MakefilePackage, CudaPackage):
     def install(self, spec, prefix):
         with working_dir(self.build_directory):
             mkdirp(prefix.bin)
-            install("namd2", prefix.bin)
+            if spec.version < Version("3"):
+                install("namd2", prefix.bin)
+            else:
+                install("namd3", prefix.bin)
 
             # I'm not sure this is a good idea or if an autoload of the charm
             # module would not be better.
