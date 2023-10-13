@@ -6,11 +6,12 @@ cp2k-mc:
   specs:
   - intel-oneapi-mkl +cluster
   - fftw@3.3.10 +openmp
+  - hdf5@1.14.0 +fortran +hl +mpi
   - libxc
-  - sirius +fortran +scalapack
-  - dbcsr@develop +shared +openmp ^intel-oneapi-mkl ^cray-mpich
-  - cosma@master +scalapack +shared ^intel-oneapi-mkl ^cray-mpich
-  - cp2k@master +libxc +libint +spglib +cosma +sirius ~elpa build_system=cmake ^intel-oneapi-mkl ^cray-mpich
+  - sirius@7.4.3 +fortran +scalapack
+  - dbcsr@2.6.0 +shared +openmp ^intel-oneapi-mkl ^cray-mpich
+  - cosma@2.6.6 +scalapack +shared ^intel-oneapi-mkl ^cray-mpich
+  - cp2k@2023.2 +libxc +libint +spglib +cosma +sirius ~elpa build_system=cmake ^intel-oneapi-mkl ^cray-mpich
   variants:
     - +mpi
     - ~cuda
@@ -32,11 +33,12 @@ cp2k-mc-elpa:
   specs:
   - intel-oneapi-mkl +cluster
   - fftw@3.3.10 +openmp
+  - hdf5@1.14.0 +fortran +hl +mpi
   - libxc
-  - sirius +fortran + scalapack +elpa
-  - dbcsr@develop +shared +openmp ^intel-oneapi-mkl ^cray-mpich
-  - cosma@master +scalapack +shared ^intel-oneapi-mkl ^cray-mpich
-  - cp2k@master +libxc +libint +spglib +cosma +sirius +elpa build_system=cmake ^intel-oneapi-mkl ^cray-mpich
+  - sirius@7.4.3 +fortran + scalapack +elpa
+  - dbcsr@2.6.0 +shared +openmp ^intel-oneapi-mkl ^cray-mpich
+  - cosma@2.6.6 +scalapack +shared ^intel-oneapi-mkl ^cray-mpich
+  - cp2k@2023.2 +libxc +libint +spglib +cosma +sirius +elpa build_system=cmake ^intel-oneapi-mkl ^cray-mpich
   variants:
     - +mpi
     - ~cuda
