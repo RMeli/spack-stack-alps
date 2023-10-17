@@ -1,0 +1,87 @@
+cp2k-mc-scalapack:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - intel-mkl threads=openmp
+  - fftw@3.3.10 +openmp
+  - libxc
+  - dbcsr@develop +shared +openmp ^intel-mkl ^cray-mpich
+  - cosma@master +scalapack +shared ^intel-mkl ^cray-mpich
+  - cp2k@master +libxc +libint +spglib +cosma +sirius ~elpa build_system=cmake ^intel-mkl ^cray-mpich
+  variants:
+    - +mpi
+    - ~cuda
+    - ~rocm
+    - build_type=Release
+  views:
+    cp2k-scalapack-dev:
+      exclude: ["cp2k"]
+    cp2k-scalapack:
+      exclude: [""]
+  mpi:
+    spec: cray-mpich@8.1.25
+    gpu: null
+cp2k-mc-dlaf:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - intel-mkl threads=openmp
+  - fftw@3.3.10 +openmp
+  - libxc
+  - dbcsr@develop +shared +openmp ^intel-mkl ^cray-mpich
+  - cosma@master +scalapack +shared ^intel-mkl ^cray-mpich
+  - dla-future@master +scalapack ^intel-mkl ^cray-mpich
+  - cp2k@master +libxc +libint +spglib +cosma +sirius +dlaf ~elpa build_system=cmake ^intel-mkl ^cray-mpich
+  variants:
+    - +mpi
+    - ~cuda
+    - ~rocm
+    - build_type=Release
+  views:
+    cp2k-dlaf-dev:
+      exclude: ["cp2k"]
+    cp2k-dlaf:
+      exclude: [""]
+  mpi:
+    spec: cray-mpich@8.1.25
+    gpu: null
+cp2k-mc-elpa:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - intel-mkl threads=openmp
+  - fftw@3.3.10 +openmp
+  - libxc
+  - sirius@7.4.3 +fortran + scalapack +elpa
+  - dbcsr@develop +shared +openmp ^intel-mkl ^cray-mpich
+  - cosma@master +scalapack +shared ^intel-mkl ^cray-mpich
+  - cp2k@master +libxc +libint +spglib +cosma +sirius +elpa build_system=cmake ^intel-mkl ^cray-mpich
+  variants:
+    - +mpi
+    - ~cuda
+    - ~rocm
+    - build_type=Release
+  views:
+    cp2k-elpa-dev:
+      exclude: ["cp2k"]
+    cp2k-elpa:
+      exclude: [""]
+  mpi:
+    spec: cray-mpich@8.1.25
+    gpu: null
+tools:
+  compiler:
+  - toolchain: gcc
+    spec: gcc@11
+  unify: true
+  specs:
+  - cmake@3.25.2
+  - pkgconfig
+  - python@3.10
+  - py-numpy
