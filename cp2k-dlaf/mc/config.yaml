@@ -2,5 +2,5 @@ name: cp2k-dlaf-mc
 store: /user-environment
 spack:
   repo: https://github.com/spack/spack.git
-  commit: 537ab481670bad654225f488fb4ec92d25f148a8
+  commit: 348e5cb522eb6041f8556ed5823fb63aa23305c7
 modules: True
