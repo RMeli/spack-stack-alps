@@ -34,7 +34,8 @@ cp2k-mc-dlaf:
   - libxc
   - dbcsr@develop +shared +openmp ^intel-mkl ^cray-mpich
   - cosma@master +scalapack +shared ^intel-mkl ^cray-mpich
-  - dla-future@master +scalapack ^intel-mkl ^cray-mpich
+  - pika@git.0cccead6bf4118695420a4c4def1d637cb0f33ad=main
+  - dla-future@0.2.1 +scalapack ^intel-mkl ^cray-mpich
   - cp2k@master +libxc +libint +spglib +cosma +sirius +dlaf ~elpa build_system=cmake ^intel-mkl ^cray-mpich
   variants:
     - +mpi
