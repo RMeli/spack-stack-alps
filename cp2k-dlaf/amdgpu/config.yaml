@@ -2,5 +2,5 @@ name: cp2k-dlaf-amdgpu
 store: /user-environment
 spack:
   repo: https://github.com/spack/spack.git
-  commit: b8a18f0a78a9af0ee3cda810ce05abbd232c347d 
+  commit: efe85755d8171bde47f041f62e9b2c197a3dffa8 
 modules: True
