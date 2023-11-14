@@ -4,17 +4,16 @@ cp2k-dlaf-amdgpu:
     spec: gcc@11
   unify: true
   specs:
-  - cary-mpich
+  - cray-mpich
   - cmake@3.24.4 # ROCm/HIP?
   - hip@5.2.3
-  - hipfft
   - mesa ~llvm
   - intel-mkl threads=openmp
   - dbcsr@develop +shared +openmp 
   - cosma@master +gpu_direct +scalapack +shared
   - pika@0.20.0
   - dla-future@master +scalapack
-  - cp2k@master +libxc +libint +spglib +cosma ~elpa +dlaf build_system=cmake ^hipfft
+  - cp2k@master +libxc +libint +spglib +cosma ~elpa +dlaf build_system=cmake
   variants:
     - +mpi
     - +rocm
@@ -32,12 +31,11 @@ cp2k-nvgpu-elpa:
   - cray-mpich
   - cmake@3.24.4 # ROCm/HIP?
   - hip@5.2.3
-  - hipfft
   - mesa ~llvm
   - intel-mkl threads=openmp
   - dbcsr@develop +shared +openmp
   - cosma@master +gpu_direct +scalapack +shared
-  - cp2k@master +libxc +libint +spglib +cosma +elpa ~dlaf build_system=cmake ^hipfft
+  - cp2k@master +libxc +libint +spglib +cosma +elpa ~dlaf build_system=cmake
   variants:
     - +mpi
     - +rocm
@@ -46,13 +44,3 @@ cp2k-nvgpu-elpa:
   mpi:
     spec: cray-mpich
     gpu: rocm
-tools:
-  compiler:
-  - toolchain: gcc
-    spec: gcc@11
-  unify: true
-  specs:
-  - cmake@3.24.4 # ROCm/HIP?
-  - pkgconfig
-  - python@3.10
-  - py-numpy
