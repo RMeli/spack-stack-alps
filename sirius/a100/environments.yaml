@@ -1,0 +1,23 @@
+gcc-env:
+  compiler:
+      - toolchain: gcc
+        spec: gcc@11
+  mpi:
+      spec: cray-mpich
+      gpu: cuda
+  unify: true
+  specs:
+  - cmake
+  - cuda@11.8
+  - libxc@5.2.3 ~cuda
+  - pika@0.22.2
+  - dla-future ^[virtuals=blas,lapack,scalapack] intel-oneapi-mkl+cluster
+  - sirius@develop +tests +fortran +cuda +scalapack +dlaf +elpa ^elpa+cuda ^[virtuals=blas,lapack,scalapack] intel-oneapi-mkl+cluster
+  variants:
+  - +mpi
+  - +cuda
+  - cuda_arch=80
+  packages:
+  - git
+  - perl
+
