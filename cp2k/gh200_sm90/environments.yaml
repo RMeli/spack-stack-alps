@@ -9,10 +9,10 @@ cp2k-nvgpu:
     #  - pika@0.24.0 +cuda ^cray-mpich
   - libxc ~cuda
   - dbcsr@2.6.0 +cuda +shared +openmp ^cray-mpich
-  - cosma@2.6.6 +scalapack +shared ^cray-mpich # +gpu_direct
+  - cosma@2.6.6 +gpu_direct +scalapack +shared ^cray-mpich
   - elpa ^cray-mpich
   - dbcsr@git.tune_gh200=2.6.0 smm=blas ~examples ^cray-mpich
-  - cp2k@git.gh200=develop +libxc +libint +spglib +cosma +elpa ~dlaf build_system=cmake ^cray-mpich
+  - cp2k@git.gh200=develop +libxc +libint +spglib +cosma +spla +elpa ~dlaf build_system=cmake ^cray-mpich
   variants:
     - +mpi
     - +cuda
