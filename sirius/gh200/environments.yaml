@@ -1,0 +1,18 @@
+gcc-env:
+  compiler:
+      - toolchain: gcc
+        spec: gcc@12.3
+  mpi:
+      spec: cray-mpich
+      gpu: cuda
+  unify: true
+  specs:
+  - cmake
+  - cuda@12.2
+  - libxc ~cuda
+  - openblas # SPLA does not build with nvpl-blas/nvpl-lapack
+  - sirius@7.5.0 +scalapack +elpa ^[virtuals=blas,lapack] openblas
+  variants:
+  - +mpi
+  - +cuda
+  - cuda_arch=90

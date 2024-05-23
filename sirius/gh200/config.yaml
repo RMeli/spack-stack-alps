@@ -1,0 +1,6 @@
+name: sirius-gh200
+store: /user-environment
+description: SIRIUS 
+spack:
+  repo: https://github.com/spack/spack.git
+  commit: v0.22.0 
