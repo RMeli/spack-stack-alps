@@ -15,7 +15,7 @@ gcc-env:
   - pika@0.25.0 ~apex build_type=Release
   - dla-future@git.pasc-2024-poster=master +mpi-gpu-aware +mpi-gpu-force-contiguous
   - elpa +gpu_streams
-  - sirius@7.5.0 +scalapack +elpa +dlaf ^[virtuals=blas,lapack] openblas
+  - sirius@git.scalapack-fallback=develop +scalapack +elpa +dlaf ^[virtuals=blas,lapack] openblas
   variants:
   - +mpi
   - +cuda
